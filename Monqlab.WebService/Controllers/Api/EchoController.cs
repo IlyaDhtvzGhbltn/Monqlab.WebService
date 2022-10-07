@@ -18,9 +18,12 @@ namespace Monqlab.WebService.Controllers.Api
         public EchoController(IFactory<MonqlabDbContext> contextFactory)
         {
             _contextFactory = contextFactory;
-
         }
 
+        /// <summary>
+        /// Method for polling the internal state of the system. If the service is ready to work, it will return the current date
+        /// </summary>
+        /// <returns>Current Date in UTC</returns>
         [HttpGet("echo")]
         public string Echo() 
         {

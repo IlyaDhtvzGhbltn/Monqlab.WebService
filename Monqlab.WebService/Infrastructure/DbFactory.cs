@@ -12,6 +12,11 @@ namespace Monqlab.WebService.Infrastructure
         {
             _factory = factory;
         }
+
+        /// <summary>
+        /// Creates DbContext
+        /// </summary>
+        /// <returns>DbContext</returns>
         public DbContext Create()
         {
             return _factory();

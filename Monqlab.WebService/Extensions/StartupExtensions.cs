@@ -13,6 +13,12 @@ namespace Monqlab.WebService.Extensions
 {
     public static class StartupExtensions
     {
+        /// <summary>
+        /// Registers a context factory.
+        /// Adds a context specifying a connection string
+        /// </summary>
+        /// <param name="services">IServiceCollection</param>
+        /// <param name="configuration">IConfiguration</param>
         public static void AddDbContext(this IServiceCollection services, IConfiguration configuration) 
         {
             IFactory<MonqlabDbContext> factory = CreateFactoryDBContext(configuration);
@@ -20,7 +26,11 @@ namespace Monqlab.WebService.Extensions
             services.AddDbContext<MonqlabDbContext>(x => x.UseSqlServer(configuration[Settings.ConnectionString]));
         }
 
-
+        /// <summary>
+        /// Adds IMailService service implementation to middleware
+        /// </summary>
+        /// <param name="services">IServiceCollection</param>
+        /// <param name="configuration">IConfiguration</param>
         public static void AddServices(this IServiceCollection services, IConfiguration configuration) 
         {
             string host = configuration[Settings.SmtpHost];

@@ -17,6 +17,11 @@ namespace Monqlab.WebService.Infrastructure
             _next = next;
         }
 
+        /// <summary>
+        /// Handles exceptions. app.UseMiddleware<ExceptionHandler>();
+        /// </summary>
+        /// <param name="context">HttpContext</param>
+        /// <returns>Task</returns>
         public async Task Invoke(HttpContext context)
         {
             try
@@ -45,6 +50,5 @@ namespace Monqlab.WebService.Infrastructure
                 await response.WriteAsync(result);
             }
         }
-
     }
 }

@@ -30,6 +30,11 @@ namespace Monqlab.WebService.Controllers.Api
             _contextFactory = contextFactory;
         }
 
+        /// <summary>
+        /// The method processes the incoming request, sends mail and saves the result to the database.
+        /// </summary>
+        /// <param name="request">POST request</param>
+        /// <returns>Collection of results of sending messages</returns>
         [HttpPost("mails")]
         public async Task<ToSendMessagesResponse> SendMessages([FromBody] ToSendMessagesRequest request) 
         {
@@ -66,6 +71,10 @@ namespace Monqlab.WebService.Controllers.Api
             else throw new InvalidEmailException("One or many recipients addresses invalid");
         }
 
+        /// <summary>
+        /// Returns a collection of messages from the database
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("mails")]
         public async Task<MessagesListResponse> GetSentMessages() 
         {

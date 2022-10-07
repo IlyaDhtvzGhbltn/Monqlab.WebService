@@ -7,9 +7,21 @@ namespace Monqlab.WebService.DTO
 {
     public class SendMessageResult
     {
+        /// <summary>
+        /// Email Address of the Recipient 
+        /// </summary>
         public string Address { get; set; }
+        /// <summary>
+        /// Could be Ok or Failed only
+        /// </summary>
         public string Status { get; set; }
+        /// <summary>
+        /// Exception when trying to send a message
+        /// </summary>
         public string FailedMessage { get; set; }
+        /// <summary>
+        /// Date in UTC
+        /// </summary>
         public DateTime CreationDateUtc { get; set; } = DateTime.UtcNow;
 
 

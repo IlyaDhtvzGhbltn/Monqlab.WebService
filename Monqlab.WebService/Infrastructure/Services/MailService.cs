@@ -18,6 +18,11 @@ namespace Monqlab.WebService.Infrastructure.Services
             _settings = settings;
         }
 
+        /// <summary>
+        /// Sends email messages to all recipients
+        /// </summary>
+        /// <param name="message">ToSendMessagesRequest</param>
+        /// <returns>A task with a collection of the results of sending messages. If the message was not sent, it contains the error text</returns>
         public async Task<List<SendMessageResult>> SendMessageAsync(ToSendMessagesRequest request)
         {
             var results = new List<SendMessageResult>();
@@ -54,6 +59,11 @@ namespace Monqlab.WebService.Infrastructure.Services
             return true;
         }
 
+        /// <summary>
+        /// Checks the address format of all recipients
+        /// </summary>
+        /// <param name="recipients"></param>
+        /// <returns>If the address format is correct returns true. If any of the recipients contains an invalid format false.</returns>
         private async Task<SendMessageResult> TrySendMessageAsync(SmtpClient smpt, string sender, string body, string subject, string to) 
         {
             MailMessage message = new MailMessage(sender, to);
